@@ -52,7 +52,7 @@ function CreateUser(Request $req)
 //store image in variable
 $img=$req->file('image');
 $store="";
-$path="Uploads/Users/";
+$path=get_photo_path();
 if(isset($img))
 {
 
@@ -80,30 +80,23 @@ $user->save();
 
 // getuser list from database for update
     function updateuser()
-    {
+{
 $data =User::all();
 
 return view("backend.user.updateuser",['users'=>$data]);
-    }
+}
 
 // get user by id for update user
-
-    function showdatabyid($id)
-    {
-
+function showdatabyid($id)
+{
  $data=User::find($id);
-
-
 return view('Backend.user.showdata',['user'=>$data]);
-
-    }
+}
 
 
     //edit user
  function edituser(Request $req)
 {
-    // dd($req->input());
-
 $req->validate([
     "name"=>'required',
     "email"=>'required',
@@ -114,7 +107,7 @@ $req->validate([
 ]);
 
 $user=User::find($req->id);
-$imgpath="Uploads/Users/";
+$imgpath=get_photo_path();
 $data=$req->input();
 $imgnew=$req->image;
 $saveimg="";
@@ -151,20 +144,14 @@ return redirect()->back()->with(['msg'=>'data update successfully','type'=>'succ
 
 }
 
-    //delete User
-
+//delete User
 function Delete_User(Request $req)
 {
-
-    $user=User::find($req->id);
-
-    if(isset($user))
-    {
+$user=User::find($req->id);
+if(isset($user))
+{
 $user->delete();
-    }
-
+}
     return redirect()->back()->with(['msg'=>'Record Delete Successfully']);
 }
-
-
 }

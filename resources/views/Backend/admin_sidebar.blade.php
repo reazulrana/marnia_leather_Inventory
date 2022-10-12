@@ -41,45 +41,18 @@
 
           
             <li  class="has-sub" >
-              <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#user"
+              <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#user-sidebar"
                 aria-expanded="false" aria-controls="user">
                 <i class="fa-solid fa-user"></i>
                 <span class="nav-text">User</span> <b class="caret"></b>
               </a>
-              <ul  class="collapse"  id="user"
-                data-parent="#sidebar-menu">
+              <ul  class="collapse"  id="user-sidebar" data-parent="#sidebar-menu">
                 <div class="sub-menu">
-                  
-                  
-                    
                       <li >
                         <a class="sidenav-item-link" href="{{ route('user.all') }}">
                           <span class="nav-text">All User</span>
-                          
                         </a>
                       </li>
-{{--                       
-                      <li >
-                        <a class="sidenav-item-link" href="/register">
-                          <span class="nav-text">Create User</span>
-                          
-                        </a>
-                      </li>
-                  
-                      <li >
-                        <a class="sidenav-item-link" href="/updateuserlist">
-                          <span class="nav-text">Update User</span>
-                          
-                        </a>
-                      </li>
-                    
-                      <li >
-                        <a class="sidenav-item-link" href="/email-compose.html">
-                          <span class="nav-text">Delete User</span>
-                          
-                        </a>
-                      </li> --}}
-
                   
                 </div>
               </ul>
@@ -90,27 +63,18 @@
 
            
  <li  class="has-sub" >
-  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#product"
+  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#product-sidebar"
     aria-expanded="false" aria-controls="email">
     <i class="fa-solid fa-user"></i>
     <span class="nav-text">Product</span> <b class="caret"></b>
   </a>
-  <ul  class="collapse"  id="product"
-    data-parent="#sidebar-menu">
+  <ul  class="collapse"  id="product-sidebar" data-parent="#sidebar-menu">
     <div class="sub-menu">
-      
-      
-        
           <li >
             <a class="sidenav-item-link" href="javascript:void(0)">
               <span class="nav-text">All Products</span>
-              
             </a>
           </li>
-          
-       
-
-      
     </div>
   </ul>
 </li>
@@ -122,22 +86,18 @@
 
            
           <li  class="has-sub" >
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#category"
+            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#category-sidebar"
               aria-expanded="false" aria-controls="email">
               <i class="fa-solid fa-user"></i>
               <span class="nav-text">Category</span> <b class="caret"></b>
             </a>
-            <ul  class="collapse"  id="category"
-              data-parent="#sidebar-menu">
+            <ul  class="collapse"  id="category-sidebar" data-parent="#sidebar-menu">
               <div class="sub-menu">  
                     <li >
                       <a class="sidenav-item-link" href="{{ route('category.list') }}">
                         <span class="nav-text">All Category</span>
                       </a>
                     </li>
-                
-
-                
               </div>
             </ul>
           </li>
@@ -146,31 +106,41 @@
 
           
           {{-- //Brand li section --}}
-
-           
           <li  class="has-sub" >
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#brand"
+            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#brand-sidebar"
               aria-expanded="false" aria-controls="email">
               <i class="fa-solid fa-user"></i>
               <span class="nav-text">Brand</span> <b class="caret"></b>
             </a>
-            <ul  class="collapse"  id="brand"
-              data-parent="#sidebar-menu">
+            <ul  class="collapse"  id="brand-sidebar" data-parent="#sidebar-menu">
               <div class="sub-menu">  
                     <li >
                       <a class="sidenav-item-link" href="{{ route('brand.list') }}">
                         <span class="nav-text">All Brand</span>
                       </a>
                     </li>
-                
-
-                
               </div>
             </ul>
           </li>
-
           {{-- //End Brand li section --}}
-          
+                 {{-- //model li section --}}
+                 <li  class="has-sub" >
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#model-sidebar"
+                    aria-expanded="false" aria-controls="email">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-text">Model</span> <b class="caret"></b>
+                  </a>
+                  <ul  class="collapse"  id="model-sidebar" data-parent="#sidebar-menu">
+                    <div class="sub-menu">  
+                          <li >
+                            <a class="sidenav-item-link" href="{{ route('model.list') }}">
+                              <span class="nav-text">All Model</span>
+                            </a>
+                          </li>
+                    </div>
+                  </ul>
+                </li>
+                {{-- //End model li section --}}
         </ul>
 
       </div>

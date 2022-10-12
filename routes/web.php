@@ -6,6 +6,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ModelController;
+
 
 
  
@@ -50,11 +52,22 @@ Route::post("/category-update",[CategoryController::class,"update"])->name("cate
 Route::post("/category-delete",[CategoryController::class,"delete"])->name("category.delete");
 });
 
+//Brand Section
 Route::group(["prefix"=>"brand"],function(){
     Route::get("/brand-list",[BrandController::class,"Show"])->name("brand.list");
     Route::post("/brand-create",[BrandController::class,"create"])->name("brand.create");
     Route::post("/brand-update",[BrandController::class,"update"])->name("brand.update");
     Route::post("/brand-delete",[BrandController::class,"delete"])->name("brand.delete");
+});
+
+//model Section
+Route::group(["prefix"=>"model"],function(){
+    Route::get("/model-list",[ModelController::class,"Show"])->name("model.list");
+    Route::post("/model-create",[ModelController::class,"create"])->name("model.create");
+    Route::post("/model-update",[ModelController::class,"update"])->name("model.update");
+    Route::post("/model-delete",[ModelController::class,"delete"])->name("model.delete");
+    Route::get("/load_brand_by_id/{id}",[ModelController::class,"get_brand_by_id"])->name("brand.get.by.id");
+
 
    
 });

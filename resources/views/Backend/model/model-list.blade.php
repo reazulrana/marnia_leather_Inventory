@@ -11,26 +11,9 @@
             <div class="card-header">
               <h2>Category</h2>
          
-              <button type="button" style="height: 40px; line-height:10px" class="btn btn-primary" data-toggle="modal" data-target="#createcategoryr">
-                <i class="mdi mdi-18px mdi-account-plus mr-1"></i>Create Category
-              </button>
-              {{-- <a  class="btn btn-primary"  href="register">
-                <i class="mdi mdi-plus mr-1"></i> New User Without jquery
-              </a> --}}
-              {{-- <div class="dropdown">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false"> Yearly Chart
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div> --}}
-       
-         
-              
+              <button type="button" style="height: 40px; line-height:10px" class="btn btn-primary" data-toggle="modal" data-target="#createmodel">
+                <i class="mdi mdi-18px mdi-account-plus mr-1"></i> Create Models
+              </button>    
             </div>
             <div class="card-body">
               <table id="productsTable" class="table table-hover table-product" style="width:100%">
@@ -42,7 +25,10 @@
                   </tr>
                 </thead>
                 <tbody>
-          
+
+
+
+
 @foreach ($categories as $category)
 
   <tr>
@@ -51,24 +37,16 @@
   
       <td>
 
-        <a href="" class="text-info text-info"title="Details"
-
-        >
+        <a href="" class="text-info text-info"title="Details">
           <i class="mdi mdi-24px mdi-eye-outline"></i>
         </a>
 
         <a href="return javascript:void(0)" data-toggle="modal" data-target="#editcategoryr" class="text-success ml-2 category-edit-button" title="Edit"
-data-id="{{ $category->id  }}"
-data-ctype="{{ $category->ctype  }}"
-
         >
           <i class="mdi mdi-24px mdi-account-edit"></i>
         </a>
 
         <a href="return javascript:void(0)" data-toggle="modal" data-target="#categorydelete"  class="text-danger ml-2 category-delete-button" title="Delete"
-        data-id="{{ $category->id  }}"
-data-ctype="{{ $category->ctype  }}"
-
         >
           <i class="mdi mdi-24px mdi-delete"></i>
         </a>
@@ -77,7 +55,6 @@ data-ctype="{{ $category->ctype  }}"
 
   </tr>
 @endforeach 
-{{-- @dd($users) --}}
                </tbody>
               </table>
             </div>
@@ -85,9 +62,9 @@ data-ctype="{{ $category->ctype  }}"
         </div>
       </div> 
 
-@include("Backend.category.modal.category-create")
-@include("Backend.category.modal.category-edit")
-@include("Backend.category.modal.category-delete")
+@include("Backend.model.modal.model-create")
+{{-- @include("Backend.category.modal.category-edit")
+@include("Backend.category.modal.category-delete") --}}
 
 
 @endsection
@@ -100,7 +77,40 @@ data-ctype="{{ $category->ctype  }}"
 <script>
   $(document).ready(function(){
 
+$('.ctype').change(function(){
 
+  var id=$(this).val()
+  var url='{{ route("brand.get.by.id",":id") }}' 
+  url=url.replace(":id",id);
+
+  $.ajaxSetup
+  ({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           }
+  });
+    $.ajax({
+        url:url,
+        type:'GET',
+        // data:{id:$(this).val()},
+        dataType:'json',
+        success:function(response)
+        {
+          let dropdown=$('#brand');
+          // alert( $(dropdown).html())
+          $(dropdown).empty();
+          $(dropdown).append('<option value="">Select Brand</option>')
+            $(response.brand).each(function(index,item){
+              let option='<option value="' + item.id + '">'+ item.Brand_Name +'</option>'
+              $(dropdown).append(option)
+            })
+        },
+        error:function(err)
+        {
+          alert(error)
+        }
+    })
+})
 $('.category-edit-button').click(function()
 {
   let element=$(this);

@@ -19,3 +19,10 @@ catch(\Exception $e)
 }
     return $tmp;
 }
+
+
+function get_photo_path()
+{
+
+    return "Uploads/Users/";
+}

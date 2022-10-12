@@ -35,9 +35,7 @@ $req->validate([
 'brand'=>'required'
 ]);
 $data=$req->input();
-
 $brand=new brand();
-
 $brand->Brand_Name=$data['brand'];
 $brand->category_id=$data['ctype'];
 $brand->save();
@@ -81,11 +79,9 @@ $brand->delete();
 else
 {
     return redirect()->back()->with(['msg'=>'Brand.id Not Found To Delete','type'=>'danger']);
-
-
 }
 return redirect()->back()->with(['msg'=>'Brand.id Not Found To Delete','type'=>'success']);
-
 }
+
 
 }
