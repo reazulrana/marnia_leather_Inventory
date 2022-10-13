@@ -110,7 +110,7 @@
 
 $('.brand-edit-button').click(function()
 {
-  let element=$(this);
+let element=$(this);
 let cat=element.data('cat_id') // store category_id
 
 //if value matched with dropdown list option value then selected true to the matched value

@@ -9,18 +9,28 @@
           <x-message.error/> 
           <div class="card card-default">
             <div class="card-header">
-              <h2>Category</h2>
+              <h2>Model</h2>
          
               <button type="button" style="height: 40px; line-height:10px" class="btn btn-primary" data-toggle="modal" data-target="#createmodel">
                 <i class="mdi mdi-18px mdi-account-plus mr-1"></i> Create Models
               </button>    
             </div>
             <div class="card-body">
-              <table id="productsTable" class="table table-hover table-product" style="width:100%">
+              <table id="productsTable" class="table table-hover table-product" >
                 <thead>
                   <tr>
                     <th>SL NO</th>
                     <th>Product Category</th>
+                    <th>Product Brand</th>
+                    <th>Product Model</th>
+                    <th>Product Color</th>
+                    <th>Product Size</th>
+                    <th>Product Comments</th>
+                    <th>Action</th>
+
+
+
+
 
                   </tr>
                 </thead>
@@ -28,18 +38,23 @@
 
 
 
-
-@foreach ($categories as $category)
+@foreach ($models as $model)
 
   <tr>
       <td>{{ $loop->iteration }}</td>
-      <td>{{ $category->ctype }}</td>
+      <td>{{ $model->ctype }}</td>
+      <td>{{ $model->Brand_Name }}</td>
+      <td>{{ $model->model }}</td>
+      <td>{{ $model->color }}</td>
+      <td>{{ $model->size }}</td>
+      <td>{{ $model->comments }}</td>
+
   
       <td>
 
-        <a href="" class="text-info text-info"title="Details">
+        {{-- <a href="" class="text-info ml-2 text-info"title="Details">
           <i class="mdi mdi-24px mdi-eye-outline"></i>
-        </a>
+        </a> --}}
 
         <a href="return javascript:void(0)" data-toggle="modal" data-target="#editcategoryr" class="text-success ml-2 category-edit-button" title="Edit"
         >
@@ -62,7 +77,7 @@
         </div>
       </div> 
 
-@include("Backend.model.modal.model-create")
+@include("Backend.model.modal.model-create",["categories"=>$categories])
 {{-- @include("Backend.category.modal.category-edit")
 @include("Backend.category.modal.category-delete") --}}
 
