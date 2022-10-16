@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\brand;
+use App\Models\tbl_model;
+
 use Illuminate\Support\Facades\DB;
 class BrandController extends Controller
 {
@@ -70,6 +72,18 @@ return redirect()->back()->with(['msg'=>'Brand Update Successfully','type'=>'suc
 function delete(Request $req)
 {
 
+$req->validate([
+    'del_brand_id'=>'required'
+]);
+
+$model=tbl_model::where(['brand_id'=> $req->del_brand_id])->first();
+
+if(isset($model))
+{
+    return redirect()->back()->with(['msg'=>'Brand Contains Model So Delete from tbl_model table in database Before Delete Brand Successfully','type'=>'danger']);
+}
+
+
 $brand=brand::find($req->del_brand_id);
 
 if(isset($brand))
@@ -80,7 +94,7 @@ else
 {
     return redirect()->back()->with(['msg'=>'Brand.id Not Found To Delete','type'=>'danger']);
 }
-return redirect()->back()->with(['msg'=>'Brand.id Not Found To Delete','type'=>'success']);
+return redirect()->back()->with(['msg'=>'Brand Deleted Successfully','type'=>'success']);
 }
 
 

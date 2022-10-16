@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger("brand_id");
              $table->string("model");
-             $table->string("color")->nullable();
-             $table->string("size")->nullable();
+             $table->string("color");
+             $table->string("size");
+             $table->string("type");
              $table->string("comments")->nullable();
              $table->timestamps();
             
