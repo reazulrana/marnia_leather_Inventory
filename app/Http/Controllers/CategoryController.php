@@ -79,19 +79,35 @@ public function delete(Request $req)
 
 
 //check category in Brand table
-$brand=brand::where('category_id','=',$req->del_cat_id)->first();
+// $brand=brand::where('category_id','=',$req->del_cat_id)->first();
 
 //If category found in Brand Table Then Throw msg 
-if(isset($brand))
-{
-    return redirect()->back()->with(['msg'=>'You Cannot Delete Category Because Category Exist in Brands Table' ,'type'=>'danger']);
-}
+// if(isset($brand))
+// {
+//     return redirect()->back()->with(['msg'=>'You Cannot Delete Category Because Category Exist in Brands Table' ,'type'=>'danger']);
+// }
 //get Category by id if found
 $cat=category::find($req->del_cat_id);
 if(isset($cat))
 {
 // dd($cat);
-$cat->delete();
+try
+{
+
+    $cat->delete();
+}
+catch(QueryException $e)
+{
+// dd($e->errorInfo[0]);
+if($e->errorInfo[0]=="23000")
+{
+    return redirect()->back()->with(['msg'=>"Record Cannot Delete Due to foreign key data exist" ,'type'=>'danger']);
+}
+else{
+    return redirect()->back()->with(['msg'=>$e->getMessage() ,'type'=>'danger']);
+
+}   
+}
 }
 else
 {

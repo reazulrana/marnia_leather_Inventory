@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('colors', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("model_id");
-            $table->string("Color");
+            $table->unsignedBigInteger("model_id");
+            $table->foreign('model_id')->references('id')->on('tbl_models');
+            $table->string("size");
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colors');
+        Schema::dropIfExists('sizes');
     }
 };

@@ -12,8 +12,8 @@
       {{-- form section --}}
       <form action='{{ route('model.delete') }}' method="POST">
         @csrf
-      <div class="modal-body">
-        <h2>Do You Want Delete Model</h2>
+      <div class="modal-body ">
+        <h2 class="text-danger text-center">Do You Want Delete ?</h2>
 
         <div class="form-group mb-4">
             <input type="hidden" id="del_model_id" class="del_model_id" name="del_model_id" >

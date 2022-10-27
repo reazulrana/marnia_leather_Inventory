@@ -26,3 +26,14 @@ function get_photo_path()
 
     return "Uploads/Users/";
 }
+
+function get_Products_photo_Upload_path()
+{
+
+    return "Uploads/Products/";
+}
+function get_Products_photo_URL_path()
+{
+
+    return "/Uploads/Products/";
+}

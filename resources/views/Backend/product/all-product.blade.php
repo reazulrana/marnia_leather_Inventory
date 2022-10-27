@@ -134,7 +134,7 @@ $(".edit_model").val(element.data("model"))
 $(".edit_color").val(element.data("color"))
 $(".edit_size").val(element.data("size"))
 $(".edit_comments").val(element.data("comments"))
-$(".edit_modeltype").val(element.data("type"))
+
 
 
 // $("#edit_brand_model option").filter(function() {

@@ -33,14 +33,12 @@ function create(Request $req)
         "brand"=>"required",
         "model"=>"required",
         "color"=>"required",
-        "type"=>"required",
         "size"=>"required",
-        "modeltype"=>"required",
+        "model_type"=>"required",
         "comments"=>"nullable"
     ]);
     //check is model exist under brand id or not
     $checkmodel=tbl_model::where(["brand_id"=>$req->brand,"model"=>$req->model])->first();
-
     if(isset($checkmodel))
     {
         return redirect()->back()->with(['msg'=>'Model Is Exist Under This Brand. You Cannot Insert Same Model into Same Brand','type'=>'danger']);
@@ -54,7 +52,7 @@ function create(Request $req)
     $model->Model=$data['model'];
     $model->color=$data['color'];
     $model->size=$data['size'];
-    $model->type=$data['modeltype'];
+    $model->type=$data['model_type'];
     $model->Comments=$data['comments'] ? $data['comments'] : "0";
     $model->save();
     $modelid=$model->id;

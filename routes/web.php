@@ -72,6 +72,14 @@ Route::group(["prefix"=>"model"],function(){
    
 });
 
+Route::group(["prefix"=>"product"],function(){
+    Route::get("/product-list",[ModelController::class,"Show"])->name("product.list");
+    Route::post("/product-create",[ModelController::class,"create"])->name("product.create");
+    Route::post("/product-update",[ModelController::class,"update"])->name("product.update");
+    Route::post("/product-delete",[ModelController::class,"delete"])->name("product.delete");
+    // Route::get("/load_brand_by_id/{id}",[ModelController::class,"get_brand_by_id"])->name("brand.get.by.id");
+});
+
 
 
 

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('tbl_models', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("brand_id");
+            $table->unsignedBigInteger("brand_id");
+            $table->foreign('brand_id')->references('id')->on('brands');
              $table->string("model");
              $table->string("color");
              $table->string("size");

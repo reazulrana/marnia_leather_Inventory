@@ -38,7 +38,7 @@
           </div>
 
           <div class="form-group mb-4">
-            <select class="form-control modeltype" name="modeltype" id="modeltype" title="category">
+            <select class="form-control model_type" name="model_type" id="model_type" title="Measure Type">
             <option value="">Select Type</option>
             <option value="size">Size</option>
             <option value="dimension">Dimension</option>
